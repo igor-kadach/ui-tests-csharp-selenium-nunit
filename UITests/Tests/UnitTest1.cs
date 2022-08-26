@@ -75,6 +75,7 @@ namespace UITests
             loginForAdding
                 .SignIn()
                 .Login(TestDatas.emailAdress, TestDatas.password);
+
             _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
 
             var openCatalogToAdding = new MainMenuPageObject(_webDriver);
@@ -97,6 +98,27 @@ namespace UITests
             var expectedResult = true;
 
             Assert.AreEqual(expectedResult, actualResult, "!Audi not found!");
+
+        }
+
+        [Test]
+        public void CheckUploadPhotoTest() {
+
+            var goToPrivateArea = new MainMenuPageObject(_webDriver);
+            goToPrivateArea
+                .SignIn()
+                .Login(TestDatas.emailAdress, TestDatas.password)
+                .OpenPersonalArea()
+                .AddPhoto();
+
+            var checkPhoto = new PersonalAreaPageObject(_webDriver);
+            checkPhoto.isAddedPhotoDisplayed();
+
+            var actualResult = checkPhoto.isAddedPhotoDisplayed();
+            var expectedResult = true;
+
+            Assert.AreEqual(expectedResult, actualResult, "!image not found!");
+
 
         }
     }
