@@ -14,7 +14,6 @@ namespace UITests.PageObjects
         private readonly By _nameOfCar = By.XPath("//span[contains(text(),'Audi')]");
         private readonly By _goToInstagram = By.XPath("//a[normalize-space()='Instagram']");
 
-
         public MainMenuPageObject(IWebDriver webDriver)
         {
             _webDriver = webDriver;
@@ -30,7 +29,6 @@ namespace UITests.PageObjects
 
         public bool GetProfileMenu()
         {
-
             var userName = _webDriver.FindElement(_profile).Displayed;
 
             return userName;
@@ -38,22 +36,18 @@ namespace UITests.PageObjects
 
         public ParametrsForSearchingPageObject OpenCatalog()
         {
-
             _webDriver.FindElement(_showCatalogButton).Click();
             return new ParametrsForSearchingPageObject(_webDriver);
         }
 
         public string GetNameOfCar()
         {
-
             var nameOfCar = _webDriver.FindElement(_nameOfCar).Text;
             return nameOfCar;
         }
 
-
         public string GetInstagramUrl()
         {
-
             _webDriver.FindElement(_goToInstagram).Click();
             _webDriver.SwitchTo().Window(_webDriver.WindowHandles[1]);
 

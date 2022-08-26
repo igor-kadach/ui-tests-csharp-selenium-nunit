@@ -7,10 +7,8 @@ using UITests.PageObjects;
 
 namespace UITests
 {
-
     public class Tests
     {
-
         private IWebDriver _webDriver;
 
         [SetUp]
@@ -21,19 +19,19 @@ namespace UITests
             _webDriver.Manage().Window.Maximize();
         }
 
-        [TearDown]
+           [TearDown]
         public void EndTest()
         {
             _webDriver.Close();
         }
 
-        [Test]
+        [Test, Order(1)]
         public void LoginTest()
         {
             var mainMenu = new MainMenuPageObject(_webDriver);
             mainMenu
                 .SignIn()
-                .Login(TestDatas.emailAdress, TestDatas.password);
+                .Login(TestDatas.phoneNumber, TestDatas.password);
 
             var actualResult = mainMenu.GetProfileMenu();
             var expectedResult = true;
@@ -41,7 +39,7 @@ namespace UITests
             Assert.AreEqual(expectedResult, actualResult, "!wrong user!");
         }
 
-        [Test]
+        [Test, Order(2)]
         public void ChooseCarTest()
         {
             var findCarByParametrs = new MainMenuPageObject(_webDriver);
@@ -54,7 +52,7 @@ namespace UITests
             Assert.That(actResult, Does.Contain(expResult), "!wrong results of searching!");
         }
 
-        [Test]
+        [Test, Order(3)]
 
         public void CheckInstagramIntegrationTest()
         {
@@ -66,15 +64,14 @@ namespace UITests
             Assert.AreEqual(expectedResult, actualResult, "!wrong url!");
         }
 
-        [Test]
+        [Test, Order(4)]
 
         public void CheckFavoriteTest()
         {
-
             var loginForAdding = new MainMenuPageObject(_webDriver);
             loginForAdding
                 .SignIn()
-                .Login(TestDatas.emailAdress, TestDatas.password);
+                .Login(TestDatas.phoneNumber, TestDatas.password);
 
             _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
 
@@ -98,16 +95,15 @@ namespace UITests
             var expectedResult = true;
 
             Assert.AreEqual(expectedResult, actualResult, "!Audi not found!");
-
         }
 
-        [Test]
-        public void CheckUploadPhotoTest() {
-
+        [Test, Order(5)]
+        public void CheckUploadPhotoTest()
+        {
             var goToPrivateArea = new MainMenuPageObject(_webDriver);
             goToPrivateArea
                 .SignIn()
-                .Login(TestDatas.emailAdress, TestDatas.password)
+                .Login(TestDatas.phoneNumber, TestDatas.password)
                 .OpenPersonalArea()
                 .AddPhoto();
 
@@ -118,8 +114,37 @@ namespace UITests
             var expectedResult = true;
 
             Assert.AreEqual(expectedResult, actualResult, "!image not found!");
+        }
 
 
+        [Test, Order(6)]
+        public void ChangePasswordTest()
+        {
+            var goToPrivateArea = new MainMenuPageObject(_webDriver);
+            goToPrivateArea
+                .SignIn()
+                .Login(TestDatas.phoneNumber, TestDatas.password)
+                .OpenPersonalArea();
+
+            var openSetting = new PersonalAreaPageObject(_webDriver);
+            openSetting.OpenSetting();
+
+            var changePassword = new SettingsPageObject(_webDriver);
+            changePassword.ChangePassword();
+
+            Thread.Sleep(3000);
+            var loginWithOldPassword = new MainMenuPageObject(_webDriver);
+            loginWithOldPassword
+                .SignIn()
+                .Login(TestDatas.phoneNumber, TestDatas.password);
+
+            var errorMessage = new AuthorizationPageObject(_webDriver);
+            errorMessage.IsErrorMessageDisplayed();
+
+            var actualResult = errorMessage.IsErrorMessageDisplayed();
+            var expectedResult = true;
+
+            Assert.AreEqual(expectedResult, actualResult, "!password wasn't changeg!");
         }
     }
 }

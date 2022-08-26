@@ -15,7 +15,6 @@ namespace UITests.PageObjects
         private readonly By _chooseFuel = By.XPath("//button[@name='p-15-engine_type']//span[@class='dropdown-button__value']");
         private readonly By _benzinFuel = By.XPath("//div[@id='p-15-engine_type']//li[1]//label[1]//span[1]");
 
-
         public ParametrsForSearchingPageObject(IWebDriver webDriver)
         {
             _webDriver = webDriver;
@@ -23,7 +22,6 @@ namespace UITests.PageObjects
 
         public MainMenuPageObject FindCar()
         {
-
             _webDriver.FindElement(_carsName).Click();
             _webDriver.FindElement(_nameAudi).Click();
             _webDriver.FindElement(_transmissionAutomatic).Click();

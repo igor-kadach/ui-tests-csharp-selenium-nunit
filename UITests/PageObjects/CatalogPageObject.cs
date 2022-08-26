@@ -16,7 +16,6 @@ namespace UITests.PageObjects
 
         public ParametrsForSearchingPageObject AddToBookmark()
         {
-
             _webDriver.FindElement(_bookmark).Click();
 
             return new ParametrsForSearchingPageObject(_webDriver);
