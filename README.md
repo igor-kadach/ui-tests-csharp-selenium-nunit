@@ -48,6 +48,12 @@ After running test ***ChangePasswordTest()*** your password to login on site wil
 
 After the first run of the test ***CheckFavoriteTest()*** to run it again. You should delete manual bookmark here: ***https://av.by/profile/bookmarks*** .
 
+***SaveSearchingTest()*** 
+
+After the first run of the test ***SaveSearchingTest()*** to run it again. You should delete manual saved search result here: ***https://av.by/profile/saved-filters*** .
+
+
+
 ### It will be fixed with next commits.
 
 
