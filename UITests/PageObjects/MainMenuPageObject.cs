@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using System;
-
+using System.Threading;
 
 namespace UITests.PageObjects
 {
@@ -13,6 +13,10 @@ namespace UITests.PageObjects
         private readonly By _showCatalogButton = By.CssSelector(".button.button--secondary.button--block");
         private readonly By _nameOfCar = By.XPath("//span[contains(text(),'Audi')]");
         private readonly By _goToInstagram = By.XPath("//a[normalize-space()='Instagram']");
+        private readonly By _askQuestion = By.XPath("//a[contains(text(),'Задать вопрос')]");
+        private readonly By _mostPopularQuestioms = By.XPath("//a[@href='https://av.by/pages/faq']");
+        private readonly By _infoEmail = By.XPath("//u[normalize-space()='info@av.by']");
+        private readonly By _saveSearchList = By.XPath("//a[@title='Сохранённые поиски']");
 
         public MainMenuPageObject(IWebDriver webDriver)
         {
@@ -36,6 +40,7 @@ namespace UITests.PageObjects
 
         public ParametrsForSearchingPageObject OpenCatalog()
         {
+            Thread.Sleep(1000);
             _webDriver.FindElement(_showCatalogButton).Click();
             return new ParametrsForSearchingPageObject(_webDriver);
         }
@@ -61,6 +66,29 @@ namespace UITests.PageObjects
             _webDriver.FindElement(_profile).Click();
             return new PersonalAreaPageObject(_webDriver);
         }
+
+        public MainMenuPageObject QuestionsFind()
+        {
+            _webDriver.FindElement(_askQuestion).Click();
+            _webDriver.FindElement(_mostPopularQuestioms).Click();
+
+            return new MainMenuPageObject(_webDriver);
+        }
+
+        public bool IsLinkEnable()
+        {
+            var isLinkEnable = _webDriver.FindElement(_infoEmail).Enabled;
+
+            return isLinkEnable;
+        }
+
+        public MainMenuPageObject OpenSaveSearchList() 
+        {
+            _webDriver.FindElement(_saveSearchList).Click();
+
+            return new MainMenuPageObject(_webDriver);
+        }
+
     }
 }
 

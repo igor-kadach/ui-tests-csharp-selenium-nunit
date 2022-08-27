@@ -18,8 +18,8 @@ namespace UITests.PageObjects
             _webDriver = webDriver;
         }
 
-        public PersonalAreaPageObject ChangePassword() {
-                        
+        public PersonalAreaPageObject ChangePassword()
+        {
             _webDriver.FindElement(_changePassword).Click();
             _webDriver.FindElement(_oldPassworField).SendKeys(TestDatas.password);
             _webDriver.FindElement(_newPasswordField).SendKeys(TestDatas.newPasswordForTest);

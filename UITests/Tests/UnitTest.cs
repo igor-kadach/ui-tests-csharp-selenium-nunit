@@ -19,7 +19,7 @@ namespace UITests
             _webDriver.Manage().Window.Maximize();
         }
 
-           [TearDown]
+        [TearDown]
         public void EndTest()
         {
             _webDriver.Close();
@@ -53,7 +53,6 @@ namespace UITests
         }
 
         [Test, Order(3)]
-
         public void CheckInstagramIntegrationTest()
         {
             var checkUrl = new MainMenuPageObject(_webDriver);
@@ -65,7 +64,6 @@ namespace UITests
         }
 
         [Test, Order(4)]
-
         public void CheckFavoriteTest()
         {
             var loginForAdding = new MainMenuPageObject(_webDriver);
@@ -116,8 +114,85 @@ namespace UITests
             Assert.AreEqual(expectedResult, actualResult, "!image not found!");
         }
 
-
         [Test, Order(6)]
+        public void InfoLinkTest()
+        {
+            var checkInfoLink = new MainMenuPageObject(_webDriver);
+            checkInfoLink
+                .QuestionsFind()
+                .IsLinkEnable();
+
+            var actualResult = checkInfoLink.IsLinkEnable();
+
+            Assert.IsTrue(actualResult);
+        }
+
+        [Test, Order(7)]
+        public void CarExchangeTest()
+        {
+            var loginToOfferExchange = new MainMenuPageObject(_webDriver);
+            loginToOfferExchange
+                .SignIn()
+                .Login(TestDatas.phoneNumber, TestDatas.password)
+                .OpenCatalog();
+
+            var findCarForExchange = new ParametrsForSearchingPageObject(_webDriver);
+            findCarForExchange
+                .FindCarForExcahge();
+
+            var isMyOfferDisplayed = new CatalogPageObject(_webDriver);
+            isMyOfferDisplayed.isMyOfferDisplayed();
+
+            var actuakResul = isMyOfferDisplayed.isMyOfferDisplayed();
+
+            Assert.IsTrue(actuakResul);
+        }
+
+        [Test, Order(8)]
+        public void SaveSearchingTest()
+        {
+            var findCarToSaveSeach = new MainMenuPageObject(_webDriver);
+            findCarToSaveSeach
+                .SignIn()
+                .Login(TestDatas.phoneNumber, TestDatas.password)
+                .OpenCatalog()
+                .FindCar();
+
+            var saveSearch = new CatalogPageObject(_webDriver);
+            saveSearch.
+                SaveSearch();
+
+            var openSearchList = new MainMenuPageObject(_webDriver);
+            openSearchList.OpenSaveSearchList();
+
+            var isSearhcIsDisplayed = new PersonalAreaPageObject(_webDriver);
+            isSearhcIsDisplayed.isSearchIsSaved();
+
+            var actualResult = isSearhcIsDisplayed.isSearchIsSaved();
+
+            Assert.IsTrue(actualResult);
+        }
+
+        [Test, Order(9)]
+        public void PaymentIntegrationTest()
+        {
+            var loginToCheckPayment = new MainMenuPageObject(_webDriver);
+            loginToCheckPayment
+                .SignIn()
+                .Login(TestDatas.phoneNumber, TestDatas.password)
+                .OpenPersonalArea()
+                .AddMyPoints();
+
+            var paymentByCard = new PersonalAreaPageObject(_webDriver);
+            paymentByCard
+                .isLogoDisplayed();
+
+            var actualResult = paymentByCard.isLogoDisplayed();
+
+            Assert.IsTrue(actualResult);
+        }
+
+        [Test, Order(10)]
         public void ChangePasswordTest()
         {
             var goToPrivateArea = new MainMenuPageObject(_webDriver);
