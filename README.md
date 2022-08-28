@@ -42,6 +42,7 @@ For example: public const string filePath = ***"C:\\Users\\Igor\\Desktop\\forTes
 ### Attention, please!
 ----------------------
 ***ChangePasswordTest()*** 
+
 After running test ***ChangePasswordTest()*** your password to login on site will be changed to ***123456789Qq***. For re-running test you should manual change password on site (here: https://av.by/profile/settings) to ***123456qwerty***. Or swap passwords in the project in ***TestDatas class***: ***public const string password = "123456qwerty";***  ***→***  ***public const string password = "123456789Qq";*** and ***public const string newPasswordForTest = "123456789Qq";*** ***→*** ******public const string newPasswordForTest = "123456qwerty";***  
 
 ***CheckFavoriteTest()***
