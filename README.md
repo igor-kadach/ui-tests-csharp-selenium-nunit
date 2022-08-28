@@ -53,6 +53,7 @@ After the first run of the test ***CheckFavoriteTest()*** to run it again. You s
 After the first run of the test ***SaveSearchingTest()*** to run it again. You should delete manual saved search result here: ***https://av.by/profile/saved-filters*** .
 
 ***CheckUploadPhotoTest()***
+
 For running test ***CheckUploadPhotoTest()*** you should have any picture name ***forTest.jpg*** located in "C:\\"; → C:\forTest.jpg   
         
 
