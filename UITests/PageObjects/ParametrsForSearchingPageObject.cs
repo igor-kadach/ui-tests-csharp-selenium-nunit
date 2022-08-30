@@ -1,5 +1,7 @@
 ﻿using OpenQA.Selenium;
 using System;
+using System.Threading;
+using UITests.Tests;
 
 namespace UITests.PageObjects
 {
@@ -15,6 +17,7 @@ namespace UITests.PageObjects
         private readonly By _benzinFuel = By.XPath("//div[@id='p-15-engine_type']//li[1]//label[1]//span[1]");
         private readonly By _allParametrs = By.XPath("//span[contains(text(),'Все параметры')]");
         private readonly By _searchByWords = By.XPath("//input[@id='p-32-description']");
+        private readonly By _showForExchange = By.XPath("//a[@class='button button--secondary button--block']");
 
         public ParametrsForSearchingPageObject(IWebDriver webDriver)
         {
@@ -39,7 +42,8 @@ namespace UITests.PageObjects
         {
             _webDriver.FindElement(_allParametrs).Click();
             _webDriver.FindElement(_searchByWords).SendKeys(TestDatas.exchange);
-            _webDriver.FindElement(_buttonShow).Click();
+            Thread.Sleep(2000);
+            _webDriver.FindElement(_showForExchange).Click();
 
             var openCarForExchange = new CatalogPageObject(_webDriver);
             openCarForExchange

@@ -17,6 +17,7 @@ namespace UITests.PageObjects
         private readonly By _mostPopularQuestioms = By.XPath("//a[@href='https://av.by/pages/faq']");
         private readonly By _infoEmail = By.XPath("//u[normalize-space()='info@av.by']");
         private readonly By _saveSearchList = By.XPath("//a[@title='Сохранённые поиски']");
+        private readonly By _bookmarksButton = By.XPath("//a[@title='Закладки']");
 
         public MainMenuPageObject(IWebDriver webDriver)
         {
@@ -82,13 +83,19 @@ namespace UITests.PageObjects
             return isLinkEnable;
         }
 
-        public MainMenuPageObject OpenSaveSearchList() 
+        public MainMenuPageObject OpenSaveSearchList()
         {
             _webDriver.FindElement(_saveSearchList).Click();
 
             return new MainMenuPageObject(_webDriver);
         }
 
+        public MainMenuPageObject OpenBookmarks()
+        {
+            _webDriver.FindElement(_bookmarksButton).Click();
+
+            return new MainMenuPageObject(_webDriver);
+        }
     }
 }
 

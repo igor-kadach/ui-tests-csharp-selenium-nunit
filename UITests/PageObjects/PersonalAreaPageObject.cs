@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using System.Threading;
+using UITests.Tests;
 
 namespace UITests.PageObjects
 {
@@ -52,6 +53,7 @@ namespace UITests.PageObjects
 
             return new MainMenuPageObject(_webDriver);
         }
+
         public bool isAddedPhotoDisplayed()
         {
             var isAddedPhotoDisplayed = _webDriver.FindElement(_findAddedPhoto).Displayed;
