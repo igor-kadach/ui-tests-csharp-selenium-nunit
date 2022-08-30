@@ -34,7 +34,6 @@ namespace UITests.Tests
                 .Login(TestDatas.phoneNumber, TestDatas.password);
                 Thread.Sleep(2000);
 
-
             var findCarForExchange = new ParametrsForSearchingPageObject(_webDriver);
             findCarForExchange
                 .FindCarForExcahge();
