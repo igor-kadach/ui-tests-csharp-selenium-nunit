@@ -37,8 +37,18 @@ For example: public const string filePath = ***"C:\\Users\\Igor\\Desktop\\forTes
 
 
 
+
 # ***Running Tests***
 
+### Attention, please!
+----------------------
+
+***CheckUploadPhotoTest()***
+
+For running test ***CheckUploadPhotoTest()*** you should have any picture name ***forTest.jpg*** located in "C:\\"; → C:\forTest.jpg   
+        
+
+### It will be fixed with next commits.
 
 
 
