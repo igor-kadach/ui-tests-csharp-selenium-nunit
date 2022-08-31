@@ -42,7 +42,7 @@ namespace UITests.Tests
             isMyOfferDisplayed.isMyOfferDisplayed();
 
             var actualResult = isMyOfferDisplayed.isMyOfferDisplayed();
-            
+
             Assert.IsTrue(actualResult);
         }
     }
