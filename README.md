@@ -32,7 +32,7 @@ May need to be added following usings:
 
 For running ***CheckUploadPhotoTest*** test you need change constant named filePath which situated in ***TestDatas*** class. 
 Assign a value to this constant your path, where situated picture what you want upload to site. 
-For example: public const string filePath = ***"C:\\Users\\Igor\\Desktop\\forTest.jpg";***
+For example: public const string filePath = ***"C:\\forTest.jpg";***
 
 
 
